@@ -1,0 +1,10 @@
+<mat-card>
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="enterData">
+
+    </textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="addPost()">Add Post</button>
+</mat-card>
+
+<p>{{post}}</p>
