@@ -1,5 +1,8 @@
-import { Component , Input } from '@angular/core';
+import { Component , OnInit , OnDestroy} from '@angular/core';
+import { Subscription } from 'rxjs';
+
 import { Post } from '../post.model';
+import { PostsService } from '../posts.service';
 
 @Component({
   selector: 'app-post-list',
@@ -7,6 +10,21 @@ import { Post } from '../post.model';
   styleUrls: ['./post-list.component.css']
 })
 
-export class PostListComponent {
-  @Input()/*use input makes posts bindable from outside */ posts: Post[] = [];
+export class PostListComponent implements OnInit, OnDestroy {
+ posts: Post[] = [];
+ private postsSub: Subscription;
+
+  constructor(public postsService: PostsService) {}
+
+  ngOnInit() {
+    // this.posts = this.postsService.getPost();
+    this.postsSub = this.postsService.postUpdatedListener()
+      .subscribe( (posts /* posts ที่ถูก emit ออกมา */: Post[] ) => {
+        this.posts = posts;
+      });
+  }
+
+  ngOnDestroy() {
+    this.postsSub.unsubscribe();
+  }
 }

@@ -1,10 +1,10 @@
 <mat-card>
  <form (submit)="addPost(postForm)" #postForm= "ngForm"><!--ใช้ ngForm access object ใน form-->
   <mat-form-field>
-  <p>Title :</p>
    <input matInput
           name="title"
           type="text"
+          placeholder="Title"
           ngModel
           required
           minlength="3"
@@ -13,10 +13,10 @@
   <mat-error *ngIf="title.invalid">Please add some title</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <p>Content :</p>
     <textarea
           matInput
           name= "content"
+          placeholder="Content"
           ngModel
           required
           #content= "ngModel"

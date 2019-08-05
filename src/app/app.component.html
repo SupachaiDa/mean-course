@@ -1,7 +1,5 @@
 <app-header></app-header>
 <main>
-  <app-post-create (createNewpost)="onaddPost($event)"></app-post-create>
-  <!-- ใช้ event binding () = "" รับ event createNewpost เเล้วทํา function onaddPost โดย $event ช่วย access ค่าที่เรา emit -->
-  <app-post-list [posts] = "storePost"></app-post-list>
-  <!-- ให้ property posts รับค่าจาก property storePost -->
+  <app-post-create></app-post-create>
+  <app-post-list></app-post-list>
 </main>
